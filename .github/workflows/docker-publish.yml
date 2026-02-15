@@ -37,16 +37,15 @@ jobs:
         with:
          images: ghcr.io/lev1992/skills-publish-docker-images/stackoverflown
 
+      
+      
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: |
-            ${{steps.meta.outputs.tags}}
-            ghcr.io/lev1992/skills-publish-docker-images/stackoverflown:main
-            ghcr.io/lev1992/skills-publish-docker-images/stackoverflown:${{ github.sha }}
+          tags: ${{ steps.meta.outputs.tags }}
 
 
        
