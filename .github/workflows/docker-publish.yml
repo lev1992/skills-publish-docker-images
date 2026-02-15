@@ -43,7 +43,8 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{steps.meta.outputs.tags}}
+          tags: |
+            ${{steps.meta.outputs.tags}}
             ghcr.io/lev1992/skills-publish-docker-images/stackoverflown:main
             ghcr.io/lev1992/skills-publish-docker-images/stackoverflown:${{ github.sha }}
 
