@@ -3,7 +3,7 @@ name: docker Publish
 on:
   push:
     branches:
-      - manin
+      - main
 
 permissions:
   contents: read
@@ -16,12 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Log in to the Container registry
-        uses: docker/login-actions@v3
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
       - name: Build and push Docker image
         run: |
-          docker build . --tag ghcr.io/lev1992/skills-publish-docker-image/stackoverflown:main
-          docker push ghcr.io/lev1992/skills-publish-docker-image/stackoverflown:main
+          docker build . --tag ghcr.io/lev1992/skills-publish-docker-images/stackoverflown:main
+          docker push ghcr.io/lev1992/skills-publish-docker-images/stackoverflown:main
