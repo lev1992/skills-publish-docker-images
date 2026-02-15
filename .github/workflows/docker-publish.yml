@@ -6,8 +6,8 @@ on:
       - manin
 
 permissions:
-  contents:write
-  packages:write
+  contents: read
+  packages: write
 
 
 jobs:
