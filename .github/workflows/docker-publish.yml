@@ -1,7 +1,6 @@
 name: docker Publish
 
 on:
-
   push:
     branches:
       - main
@@ -33,14 +32,16 @@ jobs:
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+      
+
+      
       - name: Extract metadata for Docker
         id: meta
         uses: docker/metadata-action@v5
         with:
-         images: ghcr.io/lev1992/skills-publish-docker-images/stackoverflown
+          images: ghcr.io/lev1992/skills-publish-docker-images/stackoverflown
 
-      
-      
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
