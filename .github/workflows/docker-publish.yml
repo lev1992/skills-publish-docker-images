@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Log in to the Container registry
         uses: docker/login-action@v3
   
@@ -43,8 +45,7 @@ jobs:
       - name: build and push Docker image
         uses: docker/build-push-action@v5
         with:
-         context: .
-         file: ./src/Dockerfile
+         context: ./src
          push: ${{ github.event_name != 'pull_request' }}
          platforms: linux/amd64,linux/arm64
          tags: ${{ steps.meta.outputs.tags }}
